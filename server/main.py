@@ -24,6 +24,4 @@ if __name__ == "__main__":
         "main:app",
         host="0.0.0.0",
         port=int(environ.get("PORT", 8070)),
-        reload=True,
-        debug=True,
     )

@@ -1,4 +1,3 @@
-import random
 from os import environ
 
 import socketio
@@ -37,20 +36,10 @@ def handle_connect():
     return "..."
 
 
-@app.get("/start")
-def emit_number():
+@app.get("/send/{message}")
+def emit_number(message: str):
     print("starting sending messages")
-    model.start()
-    while model.is_running:
-        number = random.randint(0, 100)
-        sio.emit(DATA_EVENT_NAME, number, namespace=MY_NAMESPACE)
-        sio.sleep(1)
-
-
-@app.get("/stop")
-def emit_measurement():
-    model.stop()
-    return "stoped sending data"
+    sio.emit(DATA_EVENT_NAME, message, namespace=MY_NAMESPACE)
 
 
 @sio.event
@@ -59,11 +48,8 @@ def connect():
 
 
 if __name__ == "__main__":
-    sio.wait()
     uvicorn.run(
         "main:app",
         host="0.0.0.0",
         port=int(environ.get("PORT", 8071)),
-        reload=True,
-        debug=True,
     )
