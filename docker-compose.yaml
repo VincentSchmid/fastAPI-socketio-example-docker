@@ -12,7 +12,7 @@ services:
     image: fastapi-client:latest
     environment:
       PORT: 8080
-      HANDLER_ADDRESS: http://fastapi_socketio_example_server_1:8080
+      HANDLER_ADDRESS: http://fastapi-socketio-example-docker_server_1:8080
     ports:
       - "8081:8080"
   
