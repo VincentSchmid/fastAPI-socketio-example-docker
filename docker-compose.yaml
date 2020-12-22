@@ -3,13 +3,13 @@ version: "3.5"
 services:
   server:
     build: server/
-    image: service-a:latest
+    image: fastapi-server:latest
     environment:
       PORT: 8080
 
   client:
-    build: server/
-    image: service-b:latest
+    build: client/
+    image: fastapi-client:latest
     environment:
       PORT: 8080
       HANDLER_ADDRESS: http://fastapi_socketio_example_server_1:8080
