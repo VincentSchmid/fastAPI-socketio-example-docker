@@ -11,7 +11,7 @@ app = socketio.ASGIApp(sio)
 
 @sio.on("connect", namespace="/test")
 def handle_connect_analytic(sid, environ):
-    print(f"service B connected {sid}")
+    print(f"client connected {sid}")
 
 
 @sio.on("number", namespace="/test")

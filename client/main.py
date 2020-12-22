@@ -5,17 +5,6 @@ import uvicorn
 from fastapi import FastAPI
 
 
-class Model:
-    def __init__(self):
-        self.is_running = False
-
-    def start(self):
-        self.is_running = True
-
-    def stop(self):
-        self.is_running = False
-
-
 app = FastAPI()
 sio = socketio.Client()
 model = Model()
