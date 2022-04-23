@@ -7,7 +7,6 @@ from fastapi import FastAPI
 
 app = FastAPI()
 sio = socketio.Client()
-model = Model()
 
 MY_NAMESPACE = "/test"
 DATA_EVENT_NAME = "number"

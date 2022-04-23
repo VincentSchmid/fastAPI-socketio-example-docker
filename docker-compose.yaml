@@ -4,6 +4,7 @@ services:
   server:
     build: server/
     image: fastapi-server:latest
+    hostname: fastapi-server
     environment:
       PORT: 8080
 
@@ -12,11 +13,10 @@ services:
     image: fastapi-client:latest
     environment:
       PORT: 8080
-      HANDLER_ADDRESS: http://fastapi-socketio-example-docker_server_1:8080
+      HANDLER_ADDRESS: http://fastapi-server:8080
     ports:
       - "8081:8080"
   
 networks: 
   default:
-    external:
-      name: socketio-test
+    name: socketio-test

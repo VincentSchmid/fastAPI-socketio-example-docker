@@ -2,12 +2,10 @@ from os import environ
 
 import socketio
 import uvicorn
-from fastapi import FastAPI
 
-app = FastAPI()
+
 sio = socketio.AsyncServer(async_mode="asgi")
 app = socketio.ASGIApp(sio)
-
 
 @sio.on("connect", namespace="/test")
 def handle_connect_analytic(sid, environ):
@@ -16,7 +14,7 @@ def handle_connect_analytic(sid, environ):
 
 @sio.on("number", namespace="/test")
 def on_message(sid, data):
-    print(data)
+    print("message received: ", data)
 
 
 if __name__ == "__main__":
