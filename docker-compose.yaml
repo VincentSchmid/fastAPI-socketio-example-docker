@@ -3,17 +3,17 @@ version: "3.5"
 services:
   server:
     build: server/
-    image: fastapi-server:latest
-    hostname: fastapi-server
+    image: socketio-server:latest
+    hostname: socketio-server
     environment:
       PORT: 8080
 
   client:
     build: client/
-    image: fastapi-client:latest
+    image: socketio-client:latest
     environment:
       PORT: 8080
-      HANDLER_ADDRESS: http://fastapi-server:8080
+      HANDLER_ADDRESS: http://socketio-server:8080
     ports:
       - "8081:8080"
   
